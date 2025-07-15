@@ -22,10 +22,11 @@ class BackendValidation
     {
         $rules = [
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:users,email',
-            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed', 
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ];
+
 
         if ($type === 'update') {
             $userId = $request->user()->id ?? null;
@@ -54,20 +55,19 @@ class BackendValidation
         return self::returnValidation($validate);
     }
 
-    public static function poststore($request)
+   public static function poststore($request)
     {
-
         $validate = Validator::make(
             $request->all(),
             [
-                'title' => 'required',
-                'content' => 'required',
+                'image' => 'required_without:content|image|mimes:jpg,jpeg,png,webp|max:2048',
+                // 'content' => 'required_without:image|string',
             ]
         );
 
-
         return self::returnValidation($validate);
     }
+
     public static function comment($request)
     {
 

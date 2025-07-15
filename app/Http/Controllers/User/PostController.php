@@ -22,10 +22,6 @@ class PostController extends Controller
             'likes.user:id,name,image',
         ]);
 
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
-        }
-
         if ($request->has('status')) {
             $query->where('status', $request->status);
         }
@@ -44,7 +40,6 @@ class PostController extends Controller
         }
         $post = new Post();
         $post->user_id = Auth::id();
-        $post->title = $request->title;
         $post->content = $request->content;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -112,9 +107,6 @@ class PostController extends Controller
     {
         $query = Post::query()->where('user_id', Auth::id());
 
-        if ($request->has('title')) {
-            $query->where('title', 'like', '%' . $request->title . '%');
-        }
 
         if ($request->has('status')) {
             $query->where('status', $request->status);
