@@ -152,7 +152,7 @@
             <ul class="common-list">
                 <li class="common-list-item">
                     <a href="http://bit.ly/2Nd05lW" target="_blank" class="common-list-button is-ads">
-                        <div class="image"><img src="https://bit.ly/3cY5ncE" width="115" alt=""></div>
+                        <div class="image"><img src="{{ asset('image/html.jpg') }}" width="115" alt=""></div>
                         <div class="text">
                             <h4 class="ads-title">Export Sketch to HTML with a click</h4>
                             <p class="ads-url">animaapp.com</p>
@@ -161,7 +161,7 @@
                 </li>
                 <li class="common-list-item">
                     <a href="http://bit.ly/2Nd05lW" target="_blank" class="common-list-button is-ads">
-                        <div class="image"><img src="https://cssclasscom.files.wordpress.com/2020/06/14.png?w=300"
+                        <div class="image"><img src="{{ asset('image/frontend.jfif') }}"
                                 width="115" alt=""></div>
                         <div class="text">
                             <h4 class="ads-title">Front-end developers, prepare to be amazed</h4>

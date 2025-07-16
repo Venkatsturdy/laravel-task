@@ -1,4 +1,3 @@
-
 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mainDiv">
@@ -26,7 +25,7 @@
 
                 </div>
                 <div class="textarea">
-                    <textarea onkeyup="InputAdjust(this)" placeholder="what's on you mind?" name="content"></textarea>
+                    <textarea onkeyup="InputAdjust(this)" placeholder="what's on you mind?" name="content" id="content"></textarea>
                 </div>
             </div>
 
@@ -97,10 +96,11 @@
                 </div>
                 <div style="display: none;" class="footer">
                     <div style="margin-top: 10px;">
-                        <button type="submit"
-                            style="padding: 10px 20px; background: #1877f2; color: white; border: none; border-radius: 5px;">
+                        <button type="submit" id="postButton"
+                            style="padding: 10px 20px; background: #1877f2; color: white; border: none; border-radius: 5px; display: none;">
                             Post
                         </button>
+
                     </div>
                 </div>
 
@@ -109,35 +109,10 @@
 
     </div>
 </form>
-@if ($errors->any())
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            Swal.fire({
-                icon: 'error',
-                title: 'Validation Error',
-                html: `{!! implode('<br>', $errors->all()) !!}`,
-                confirmButtonText: 'Close',
-                width: '500px', // or any width you prefer
-                customClass: {
-                    popup: 'swal2-popup-half-height'
-                }
-            });
-        });
-    </script>
-@endif
 
 
-@if (session('success'))
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: "{{ session('success') }}"
-            });
-        });
-    </script>
-@endif
+
+
 <script>
     var text = document.getElementsByTagName('textarea')[0],
         more = document.getElementsByClassName('more')[0],
@@ -146,9 +121,9 @@
         ico = document.querySelectorAll(".photos , .feeling, .tagfriend, .checkin, .back, .live "),
         line = document.querySelectorAll('.line span'),
         bor = document.querySelectorAll('.line')
-        exit = document.querySelectorAll('.title p')[0],
+    exit = document.querySelectorAll('.title p')[0],
         colo = document.getElementsByClassName('colors')
-        span = document.querySelectorAll('.colors span'),
+    span = document.querySelectorAll('.colors span'),
         footer = document.getElementsByClassName('footer')[0];
     text.onfocus = function() {
         text.style.height = "90px";
@@ -267,5 +242,24 @@
                 reader.readAsDataURL(file);
             }
         });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const contentInput = document.getElementById('content');
+        const imageInput = document.getElementById('imageInput');
+        const postButton = document.getElementById('postButton');
+
+        function togglePostButton() {
+            const hasText = contentInput.value.trim().length > 0;
+            const hasImage = imageInput.files.length > 0;
+
+            postButton.style.display = (hasText || hasImage) ? 'inline-block' : 'none';
+        }
+
+        contentInput.addEventListener('input', togglePostButton);
+        imageInput.addEventListener('change', togglePostButton);
+
+        togglePostButton();
     });
 </script>

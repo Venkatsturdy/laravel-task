@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Facebook Login Page (Clone)</title>
     <link rel="stylesheet" href="{{ asset('resource/web/loginstyle.css') }}">
-
 </head>
 
 <body>
@@ -51,8 +50,12 @@
                             </span>
                         </div>
                         <input type="submit" name="submit" id="submit" value="Log In">
-                        <a href="{{ route('register') }}" class="create-new-acc">Create New Account</a>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <p style="margin: 0;">Create new Account</p>
+                            <a href="{{ route('register') }}" target="_self">Sign up</a>
+                        </div>
                         <div class="line"></div>
+
 
                     </form>
 
@@ -133,12 +136,12 @@
         </div>
     </div>
     <!-- partial -->
-<script>
-    function togglePassword(fieldId) {
-        const field = document.getElementById(fieldId);
-        field.type = field.type === "password" ? "text" : "password";
-    }
-</script>
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === "password" ? "text" : "password";
+        }
+    </script>
 </body>
 
 </html>

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Facebook Login Page (Clone)</title>
     <link rel="stylesheet" href="{{ asset('resource/web/loginstyle.css') }}">
-
 </head>
 
 <body>
@@ -49,18 +48,21 @@
                         <label for="email">Email Address</label>
                         <input type="text" name="email" id="email" placeholder="Email address" required>
 
-                       <label for="password">Password</label>
+                        <label for="password">Password</label>
                         <div style="position: relative;">
                             <input type="password" name="password" id="password" placeholder="Password" required>
-                            <span onclick="togglePassword('password')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                            <span onclick="togglePassword('password')"
+                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
                                 👁
                             </span>
                         </div>
 
                         <label for="password_confirmation">Confirm Password</label>
                         <div style="position: relative;">
-                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required>
-                            <span onclick="togglePassword('password_confirmation')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                placeholder="Confirm Password" required>
+                            <span onclick="togglePassword('password_confirmation')"
+                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
                                 👁
                             </span>
                         </div>
@@ -68,11 +70,14 @@
 
                         <label for="image">Image</label><br>
                         <input type="file" name="image" id="image" accept="image/*" required><br>
-
+                        <br>
                         <input type="submit" name="submit" value="Register">
-
-                        <a href="{{ route('login') }}" class="create-new-acc">Login</a>
-                        <div class="line"></div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <p style="margin: 0;">Please login already have a account</p>
+                            <a href="{{ route('login') }}" target="_self" >Login</a>
+                            <div class="line"></div>
+                        </div>
+                        <br>
                     </form>
 
                 </div>
@@ -152,12 +157,12 @@
         </div>
     </div>
     <!-- partial -->
-<script>
-    function togglePassword(fieldId) {
-        const field = document.getElementById(fieldId);
-        field.type = field.type === "password" ? "text" : "password";
-    }
-</script>
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === "password" ? "text" : "password";
+        }
+    </script>
 
 </body>
 
