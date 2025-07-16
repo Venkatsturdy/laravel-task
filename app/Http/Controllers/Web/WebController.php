@@ -77,7 +77,6 @@ class WebController extends Controller
             $post->image = $path;
         }
         $post->save();
-        Cache::flush();
         return redirect()->route('posts.index')->with('success', 'Post Created Successfully');
     }
 
